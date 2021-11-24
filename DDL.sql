@@ -98,7 +98,7 @@ GO
 
 CREATE TABLE COURSE (
 	course_id varchar(10),
-	course_name varchar(50),
+	course_name varchar(250),
 	start_date date,
 	end_date date,
 	credits int,
@@ -110,7 +110,7 @@ CREATE TABLE STAFF (
 	staff_id varchar(10),
 	first_name varchar(50),
 	last_name varchar(50),
-	[type] varchar(30),
+	staff_type varchar(30),
 	phone_number bigint,
 	ssn int,
 	[state] varchar(30),
@@ -150,7 +150,7 @@ GO
 CREATE TABLE COURSE_STAFF (
 	staff_id varchar(10),
 	course_id varchar(10),
-	hoursAvailable int,	
+	availability_in_hours_per_week int,	
 	constraint pk_course_staff PRIMARY KEY (staff_id, course_id),
 	constraint fk_course_staff1 FOREIGN KEY (staff_id) REFERENCES STAFF(staff_id),
 	constraint fk_course_staff2 FOREIGN KEY (course_id) REFERENCES COURSE(course_id),
