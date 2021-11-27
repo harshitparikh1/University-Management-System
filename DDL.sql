@@ -66,7 +66,6 @@ create table room(
 
 create table STUDENT (
 	student_id varchar(10),
-	dept_id varchar(10),
 	first_name VARCHAR(50),
 	last_name VARCHAR(50),
 	email VARCHAR(50),
@@ -78,13 +77,13 @@ create table STUDENT (
 	mobile_number BIGINT,
 	date_of_birth DATE,
 	GPA DECIMAL(3,2),
-	constraint PK_Student PRIMARY KEY (student_id),
-	constraint FK_Student Foreign Key (dept_id) REFERENCES DEPARTMENT(dept_id)
+	constraint PK_Student PRIMARY KEY (student_id)
 );
 GO
 
 create table registration (
 	registration_id varchar(10),
+	dept_id varchar(10),
 	college_id VARCHAR(10),
 	student_id varchar(10),
 	admission_status varchar(20),
@@ -92,7 +91,8 @@ create table registration (
 	degree_type varchar(20),
 	constraint PK_Registration PRIMARY KEY (registration_id),
 	constraint FK_Registration1 FOREIGN KEY (college_id) REFERENCES College(college_id),
-	constraint FK_Registration2 FOREIGN KEY (student_id) REFERENCES Student(student_id)
+	constraint FK_Registration2 FOREIGN KEY (student_id) REFERENCES Student(student_id),
+	constraint FK_Student Foreign Key (dept_id) REFERENCES DEPARTMENT(dept_id)
 );
 GO
 
@@ -169,20 +169,19 @@ GO
 
 CREATE TABLE CLUB (
 	club_id varchar(10),
-	club_name varchar(30),
-	club_type varchar(25),
-	activity varchar(10),
+	club_type varchar(100)
 	constraint pk_club primary key (club_id)
 );
 GO
 
 CREATE TABLE PARTICIPATES (
+	participates_id varchar(10),
 	club_id varchar(10),
 	student_id varchar(10),
 	position varchar(25),
 	join_date date,
 	left_date date,
-	constraint pk_participates primary key (club_id, student_id),
+	constraint pk_participates primary key (participates_id),
 	constraint fk_participates1 FOREIGN KEY (student_id) REFERENCES STUDENT(student_id),
 	constraint fk_participates2 FOREIGN KEY (club_id) REFERENCES CLUB(club_id),
 
