@@ -98,7 +98,7 @@ GO
 
 CREATE TABLE COURSE (
 	course_id varchar(10),
-	course_name varchar(250),
+	course_name varchar(550),
 	start_date date,
 	end_date date,
 	credits int,
@@ -123,12 +123,12 @@ CREATE TABLE STAFF (
 GO
 
 CREATE TABLE STAFF_DEPT (
+	staff_dept_id varchar(10),
 	staff_id varchar(10),
 	dept_id VARCHAR(10),
 	start_date date,
 	end_date date,
-	position varchar(50)
-	constraint pk_staff_dept PRIMARY KEY (staff_id, dept_id),
+	constraint pk_staff_dept PRIMARY KEY (staff_dept_id),
 	constraint FK_staff_dept1 FOREIGN KEY (staff_id) REFERENCES STAFF(staff_id),
 	constraint FK_staff_dept2 FOREIGN KEY (dept_id) REFERENCES DEPARTMENT(dept_id)	
 );
