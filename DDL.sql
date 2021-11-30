@@ -142,8 +142,7 @@ CREATE TABLE SCHEDULES (
 	isAvailable int, 
 	constraint pk_schedules PRIMARY KEY (staff_id, room_id),
 	constraint fk_schedules1 FOREIGN KEY (staff_id) REFERENCES STAFF(staff_id),
-	constraint fk_schedules2 FOREIGN KEY (room_id) REFERENCES ROOM(room_id),
-	constraint isAvailableChk CHECK (isAvailable in (0, 1))
+	constraint fk_schedules2 FOREIGN KEY (room_id) REFERENCES ROOM(room_id)
 );
 GO
 
