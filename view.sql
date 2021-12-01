@@ -1,4 +1,4 @@
--- View to get TOP 10 students based on their GPA
+-- 1. View to get TOP 10 students based on their GPA
 drop view if exists top_10_student_GPA;
 go
 
@@ -21,7 +21,7 @@ select * from top_10_student_GPA;
 
 
 
--- View to display college name of students
+-- 2. View to display college name of students
 drop view if exists student_college_name;
 go
 
@@ -32,3 +32,25 @@ join registration r on s.student_id = r.student_id
 join DEPARTMENT d on s.dept_id = d.dept_id
 join COLLEGE c on d.college_id = c.college_id
 group by s.student_id, c.college_name);
+
+
+
+-- 3. Best departments from the university
+
+drop view if exists best_departments_college;
+go
+
+create view best_departments_in_college as
+(select c.college_name, d.dept_name, count(1) total_students_enrolled
+from registration r
+join student s on r.student_id = s.student_id
+join DEPARTMENT d on r.dept_id = d.dept_id
+join college c on d.college_id = c.college_id
+group by c.college_name, d.dept_name
+order by count(1) desc
+offset 0 rows)
+go
+
+select * from best_departments_in_college
+
+
