@@ -1,3 +1,4 @@
+-- Procedures
 
 -- 1. Procedure to fetch GPA of a student
 drop procedure if exists getGPAofStudent;
@@ -61,3 +62,17 @@ declare @rooms_booked_count int;
 exec getTotalRoomsBookedByProfessor @staff_id = 'ST45', @number_of_rooms_booked = @rooms_booked_count output
 select @rooms_booked_count as 'Number of rooms booked'
 
+
+
+-- 4. Procedure to update all GPA's in the student table
+update student
+set gpa = student_GPA_table.total_GPA
+from STUDENT 
+join 
+(	select s.student_id, coalesce(round(avg(grade), 2), 0) as total_GPA
+	from student s
+	join ENROLLS e
+	on s.student_id = e.student_id
+	group by s.student_id
+) student_GPA_table
+on student.student_id = student_GPA_table.student_id

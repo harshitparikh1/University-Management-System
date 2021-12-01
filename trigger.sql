@@ -48,4 +48,42 @@ select * from StudentChangeCourseHistory;
 
 
 
+-- Trigger 2 
+
+DROP TRIGGER IF EXISTS UpdateStudentGPA
+go
+
+CREATE TRIGGER UpdateStudentGPA
+on Enrolls
+AFTER UPDATE
+AS
+
+update student
+set student.GPA = student_GPA_table.total_GPA
+from STUDENT 
+join 
+(	select s.student_id, coalesce(round(avg(grade), 2), 0) as total_GPA
+	from student s
+	join ENROLLS e
+	on s.student_id = e.student_id
+	group by s.student_id
+) student_GPA_table
+on student.student_id = student_GPA_table.student_id
+
+GO
+
+
+-- GPA of student S1 is 2.96
+select GPA from STUDENT where student_id = 'S1';
+
+-- S1 course CO107 GPA is 2.95 
+select * from ENROLLS where student_id = 'S1';
+
+-- Updating student S1 - course CO107 to 4.00.
+update enrolls 
+set grade = 4.00
+where student_id = 'S1' and course_id = 'CO107'
+
+-- NEW GPA of student S1 is 3.31
+select GPA from STUDENT where student_id = 'S1';
 
