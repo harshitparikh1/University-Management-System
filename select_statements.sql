@@ -16,6 +16,18 @@ GROUP BY
 ORDER BY [TableName]
 GO
 
+-- Check all constraints
+SELECT 
+  Name,
+  OBJECT_NAME(parent_object_id) AS 'Table',
+  ISNULL(name, '(n/a)') AS 'Column',
+  parent_column_id,
+  CASE WHEN parent_column_id = 0
+    THEN 'Table-level'
+    ELSE 'Column-level'
+    END AS 'Table/Column',
+  Definition
+FROM sys.check_constraints;
 
 
 
