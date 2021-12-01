@@ -29,6 +29,16 @@ SELECT
   Definition
 FROM sys.check_constraints;
 
+-- Check all triggers
+
+SELECT  
+    name,
+    is_instead_of_trigger
+FROM 
+    sys.triggers  
+WHERE 
+    type = 'TR';
+
 
 
 
