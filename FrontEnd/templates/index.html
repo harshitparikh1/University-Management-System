@@ -8,7 +8,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
-            <form method=POST action="/">
+            <form method=POST action="{{ url_for('insertData') }}">
                 <div class="form-group">
                     <h3>General Info</h3>
                     <label >Student Id</label>
@@ -35,7 +35,7 @@
                     <label >City</label>
                     <input type="text" class="form-control" name="city" placeholder="City">
                     <label >Zip code</label>
-                    <input type="text" class="form-control" name="zip" placeholder="Zip Code">
+                    <input type="number" class="form-control" name="zip" placeholder="Zip Code">
 
                 </div>
 
