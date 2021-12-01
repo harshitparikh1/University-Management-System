@@ -2,10 +2,18 @@ from flask import Flask, render_template,request
 
 import pypyodbc as pyodbc
 import pandas as pd
+# Pratik connection
+# conn = pyodbc.connect('Driver={SQL Server};'
+# 'Server=LAPTOP-6QGV2OPK\MSSQLSERVER01;'
+# 'Database=university_management;'
+# 'Trusted_Connection=yes;')
+
+# Harshit connection
 conn = pyodbc.connect('Driver={SQL Server};'
-'Server=LAPTOP-6QGV2OPK\MSSQLSERVER01;'
+'Server=LAPTOP-07JMFG9U;'
 'Database=university_management;'
 'Trusted_Connection=yes;')
+
 cursor = conn.cursor()
 
 dept_df = pd.read_sql_query("SELECT * FROM Student where student_id = 'S9999'", conn)

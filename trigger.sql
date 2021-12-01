@@ -45,3 +45,24 @@ update dbo.enrolls set course_id ='CO45' WHERE student_id = 'S102';
 
 -- Check the new table 
 select * from StudentChangeCourseHistory;
+
+
+
+
+
+
+
+
+
+
+CREATE OR ALTER TRIGGER trig_InsertCustomerData
+ON Customer
+AFTER INSERT
+AS
+
+UPDATE Customer set
+[Encrypted_Email] = EncryptByKey(Key_GUID('EmailPass_SM'), CONVERT(varbinary,[CustomerEmail]) )
+UPDATE Customer set
+[Encrypted_Phone] = EncryptByKey(Key_GUID('PhonePass_SM'), CONVERT(varbinary,[CustomerContact]) )
+
+GO
