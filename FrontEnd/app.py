@@ -2,25 +2,23 @@ from flask import Flask, render_template,request
 
 import pypyodbc as pyodbc
 import pandas as pd
-<<<<<<< Updated upstream
-# Pratik connection
+
+#Harshit's Connection
 # conn = pyodbc.connect('Driver={SQL Server};'
-# 'Server=LAPTOP-6QGV2OPK\MSSQLSERVER01;'
+# 'Server=LAPTOP-07JMFG9U;'
 # 'Database=university_management;'
 # 'Trusted_Connection=yes;')
 
-# Harshit connection
-=======
 from werkzeug.utils import redirect
->>>>>>> Stashed changes
+
 conn = pyodbc.connect('Driver={SQL Server};'
-'Server=LAPTOP-07JMFG9U;'
+'Server=LAPTOP-6QGV2OPK\MSSQLSERVER01;'
 'Database=university_management;'
 'Trusted_Connection=yes;')
-
 cursor = conn.cursor()
 
-dept_df = pd.read_sql_query("SELECT * FROM Student where student_id = 'S9999'", conn)
+dept_df = pd.read_sql_query("SELECT * FROM Student", conn)
+df_html = dept_df.to_html()
 print(dept_df)
 
 
@@ -62,6 +60,12 @@ def insertData():
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
+
+@app.route('/table')
+def display_table():
+    return render_template('success.html', table_html = df_html)
+
+
 
 if __name__ == '__main__':
     app.run()
