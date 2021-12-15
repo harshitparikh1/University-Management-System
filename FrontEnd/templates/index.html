@@ -3,13 +3,19 @@
 
 {% block body %}
 
-<h1>Unviversity Management System</h1>
+    <div class="container">
+<h1 style="text-align: center;">Unviversity Management System</h1>
+    </div>
 
-<div class="container">
+<div class="container" >
+    <br>
+    <br>
     <div class="row">
+        <div id="photo"></div>
         <div class="col-md-4 col-md-offset-4">
-            <form method=POST action="{{ url_for('insertData') }}">
+            <form class="well form-horizontal" action=" " method="post"  id="contact_form" method=POST action="{{ url_for('insertData') }}">
                 <div class="form-group">
+
                     <h3>General Info</h3>
                     <label >First Name</label>
                     <input type="text" class="form-control" name="first_Name" placeholder="First Name">
@@ -17,6 +23,8 @@
                     <input type="text" class="form-control" name="last_Name" placeholder="Last Name">
                     <label >Gender</label>
                     <input type="text" class="form-control" name="gender" placeholder="Gender">
+
+                    
                 </div>
                 <div class="form-group">
                     <h3>Info</h3>
@@ -24,8 +32,10 @@
                     <input type="email" class="form-control" name="email_id" placeholder="Email Id">
                     <label >SSN</label>
                     <input type="number" class="form-control" name="ssn" placeholder="SSN">
-
+            
                 </div>
+                
+                
                 <div class="form-group">
                     <h3>Address</h3>
                     <label >State</label>
@@ -52,11 +62,12 @@
                 <button type="submit" class="btn btn-primary btn-block">Add Student</button>
                </div>
                 
-                
+               
             </form>
             <br>
             
         </div>
+        
     </div>
 </div>
 
