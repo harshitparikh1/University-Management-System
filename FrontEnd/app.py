@@ -1,4 +1,7 @@
+from contextlib import nullcontext
+from re import A
 from flask import Flask, render_template,request
+from numpy import empty
 
 import pypyodbc as pyodbc
 import pandas as pd
@@ -39,7 +42,7 @@ def insertData():
     last_Name = request.form['last_Name']
     gender = request.form['gender']
     email_id = request.form['email_id']
-    ssn = request.form['ssn']
+    ssn = A
     state = request.form['state']
     city = request.form['city']
     zip = request.form['zip']
@@ -47,7 +50,7 @@ def insertData():
     date_of_birth = request.form['date_of_birth']
     
 
-    query = "insert into Student (student_id, first_name, last_name, email, gender, SSN, state, city, zip, mobile_number, date_of_birth) values ('{}', '{}', '{}', '{}', '{}', {}, '{}', '{}', {}, '{}', '{}')".format(student_id, first_Name, last_Name, email_id, gender, ssn, state, city, zip, mobile_number, date_of_birth)
+    query = "insert into Student (student_id, first_name, last_name, email, gender, state, city, zip, mobile_number, date_of_birth) values ('{}', '{}', '{}', '{}', '{}', '{}', '{}', {}, '{}', '{}')".format(student_id, first_Name, last_Name, email_id, gender, state, city, zip, mobile_number, date_of_birth)
     print(query)
     cursor.execute(query)
     conn.commit()
