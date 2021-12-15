@@ -23,11 +23,19 @@ To solve this problem, we implement a relational database system, where we impro
 
 # flask-app
 
-Example app for demonstrating university management system .
+Example app for demonstrating university management system.
 
 ## Getting started
 
-For the standalone web service:
+- You will need to have Python 3+ installed, this project has been tested with Python version 3.X
+- Clone this repo
+
+```
+git clone https://github.com/harshitparikh1/University-Management-System.git
+cd University-Management-System/FrontEnd
+```
+
+To run the application:
 
 ```shell
 pip install -r requirements.txt
