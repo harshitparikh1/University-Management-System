@@ -44,7 +44,7 @@ def insertData():
     last_Name = request.form['last_Name']  
     gender = request.form['gender']
     email_id = request.form['email_id']
-	ssn = request.form['ssn']
+    ssn = request.form['ssn']
     state = request.form['state']
     city = request.form['city']
     zip = request.form['zip']
@@ -55,8 +55,8 @@ def insertData():
     print(query)
     cursor.execute(query)
     conn.commit()
-    cursor.close()
-    conn.close()
+    # cursor.close()
+    # conn.close()
     print(date_of_birth)
     return 'Success'
 
