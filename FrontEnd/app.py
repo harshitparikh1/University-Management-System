@@ -4,17 +4,17 @@ import pypyodbc as pyodbc
 import pandas as pd
 
 #Harshit's Connection
-# conn = pyodbc.connect('Driver={SQL Server};'
-# 'Server=LAPTOP-07JMFG9U;'
-# 'Database=university_management;'
-# 'Trusted_Connection=yes;')
+conn = pyodbc.connect('Driver={SQL Server};'
+'Server=LAPTOP-07JMFG9U;'
+'Database=university_management;'
+'Trusted_Connection=yes;')
 
 from werkzeug.utils import redirect
 
-conn = pyodbc.connect('Driver={SQL Server};'
-'Server=LAPTOP-6QGV2OPK\MSSQLSERVER01;'
-'Database=university_management;'
-'Trusted_Connection=yes;')
+# conn = pyodbc.connect('Driver={SQL Server};'
+# 'Server=LAPTOP-6QGV2OPK\MSSQLSERVER01;'
+# 'Database=university_management;'
+# 'Trusted_Connection=yes;')
 cursor = conn.cursor()
 
 dept_df = pd.read_sql_query("SELECT * FROM Student", conn)
